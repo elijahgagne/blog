@@ -1,0 +1,88 @@
+baseURL: "https://gagnenet.com"
+title: Elijah Gagne
+paginate: 5
+theme: PaperMod
+
+googleAnalytics: G-MW603CMQ2K
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+params:
+  # title: ExampleSite
+  # description: "ExampleSite description"
+  author: Elijah Gagne
+  # images: ["<link or path of image for opengraph, twitter-cards>"]
+
+  defaultTheme: auto
+  disableThemeToggle: false
+
+  ShowReadingTime: true
+  ShowShareButtons: true
+  disableSpecial1stPost: false
+  comments: true
+  hidemeta: false
+  showtoc: false
+  tocopen: false
+
+  assets:
+    # disableHLJS: true # to disable highlight.js
+    # disableFingerprinting: true
+    favicon: "<link / abs url>"
+    favicon16x16: "<link / abs url>"
+    favicon32x32: "<link / abs url>"
+    apple_touch_icon: "<link / abs url>"
+    safari_pinned_tab: "<link / abs url>"
+
+  label:
+    text: "GagneNet"
+    icon: /headshot.jpg
+    iconHeight: 35
+
+  # home-info mode
+  homeInfoParams:
+    Title: "Hi there \U0001F44B"
+    Content: Welcome to my blog
+
+  socialIcons:
+    - name: twitter
+      url: "https://twitter.com/ElijahWGagne"
+    - name: stackoverflow
+      url: "https://stackoverflow.com/users/1305450/elijah-w-gagne"
+    - name: github
+      url: "https://github.com/elijahgagne"
+
+  # analytics:
+  #   google:
+  #     SiteVerificationTag: "XYZabc"
+
+  cover:
+    hidden: true # hide everywhere but not in structured data
+    hiddenInList: true # hide on list pages and home
+    hiddenInSingle: true # hide on single page
+
+  # for search
+  # https://fusejs.io/api/options.html
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+menu:
+  main:
+    - identifier: posts
+      name: posts
+      url: /posts/
+      weight: 10
+    - identifier: tags
+      name: tags
+      url: /tags/
+      weight: 20
