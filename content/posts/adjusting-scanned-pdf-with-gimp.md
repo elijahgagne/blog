@@ -14,10 +14,10 @@ Let's begin by opening GIMP. In my case, I'm using version 2.10 on macOS Big Sur
 
 Next, navigate to `Colors`, `Levels...`
 
-![adjusting-scanned-pdf-with-gimp-1.png](/adjusting-scanned-pdf-with-gimp-1.png)
+![color-levels.png](/adjusting-scanned-pdf-with-gimp/color-levels.png)
 
 Under `Input Levels` change the lower bound from `0` to something like `120`. Change the upper bound from `255` to something like `220`.
 
-![adjusting-scanned-pdf-with-gimp-2.png](/adjusting-scanned-pdf-with-gimp-2.png)
+![change-levels.png](/adjusting-scanned-pdf-with-gimp/change-levels.png)
 
 Once satified, click `OK`. Then Save or Export the file.

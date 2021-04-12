@@ -15,7 +15,7 @@ OK, I've got a domain name that's available, where to register it. I registered 
 
 Sold! I bought `gagnenet.com` via [Google Domains](https://domains.google.com/), and followed the steps to setup email forwarding. Besides my own personal email address, I wanted to have a family mailing list and a "noreply" blackhole address that I could use to send out automated emails. I realized that all of these could simply forward to my personal gmail.com address and then I could create filter rules to do the appropriate thing depending on what address the email was originally sent to.
 
-![Google Domains](/domain-name-1.png)
+![google-domains](/domain-name/google-domains.png)
 
 Great, domain, email, check. The last part to consider was around web hosting. I'd had some experience with Cloudflare and I decided to change my nameservers for `gagnenet.com` to them for the following reasons:
 - If I wanted to proxy web traffic through Cloudflare for performance or security reasons, giving Cloudflare DNS management of the domains makes configuration seamless
@@ -28,6 +28,6 @@ Changing the name servers over is super simple. Cloudflare and Google each have 
 
 After switching the nameservers over to Cloudflare I had to add the relevant MX records to handle email forwarding (something Google Domains did automatically).
 
-![Cloudflare](/domain-name-2.png)
+![cloudflare](/domain-name/cloudflare.png)
 
 With that, I have my `.com`, DNS, and email setup for my custom domain. Total cost $12/year.
