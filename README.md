@@ -23,6 +23,9 @@ cd themes/PaperMod
 git pull
 ```
 
+For finding a theme
+https://pfht.netlify.app/
+
 ## Google Analytics
 
 https://blog.hootsuite.com/how-to-set-up-google-analytics/
