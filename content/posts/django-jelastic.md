@@ -201,7 +201,7 @@ We can setup Jelastic to periodically poll our Git repo and do a pull when there
 
 ![jelastic6](/django-jelastic/jelastic6.png)
 
-## Explaining some of gotchas
+## Explaining some gotchas
 
 Walking through these steps start to finish shouldn't take more than 10 minutes. But it took me hours to figure out how to get everything working. First, I want to give credit to https://djangoforbeginners.com/hello-world/, which I used to help me get started with Django. I don't have a lot of experience with Django or using Apache with the `mod_wsgi` for that matter.
 
