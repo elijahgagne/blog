@@ -22,7 +22,7 @@ Great, domain, email, check. The last part to consider was around web hosting. I
 - Cloudflare has a ton of additional features that might prove useful at some point
 - Cloudflare has a more capable API than Google Domains if I wanted to dynamically update DNS
 
-Changing the name servers over is super simple. Cloudflare and Google each have their own article explaining it from both angles:
+Changing the nameservers over is super simple. Cloudflare and Google each have their own article explaining it from both angles:
 - [Changing your domain nameservers to Cloudflare](https://support.cloudflare.com/hc/en-us/articles/205195708-Changing-your-domain-nameservers-to-Cloudflare)
 - [Google: Manage domain name servers](https://support.google.com/domains/answer/3290309)
 

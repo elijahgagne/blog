@@ -41,20 +41,13 @@ django-admin startproject config .
 # Update the SQLite database (although we won't be using this)
 python manage.py migrate
 ```
-
-<br /> \
-<br />
-At this point, we have Django ready for testing so let's see if it's working. Run `python manage.py runserver` and then browse to [http://127.0.0.1:8000/](http://127.0.0.1:8000/). \
-<br /> \
-<br />
+\
+At this point, we have Django ready for testing so let's see if it's working. Run `python manage.py runserver` and then browse to [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
 
 ![browse1](/django-jelastic/browse1.png)
 
-<br /> \
-<br />
-Press `Ctrl-C` to stop the web server. Now let's create what Django calls an application and customize the configuration so that it will run in Jelastic. \
-<br /> \
-<br />
+\
+Press `Ctrl-C` to stop the web server. Now let's create what Django calls an application and customize the configuration so that it will run in Jelastic.
 
 ```sh
 # Create Django app named "pages"
@@ -122,19 +115,13 @@ application = get_wsgi_application()
 EOF
 ```
 
-<br /> \
-<br />
-Now's a good time to test things again by running `python manage.py runserver` and browsing to [http://127.0.0.1:8000/](http://127.0.0.1:8000/). \
-<br /> \
-<br />
+\
+Now's a good time to test things again by running `python manage.py runserver` and browsing to [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
 
 ![browse2](/django-jelastic/browse2.png)
 
-<br /> \
-<br />
-OK, we have our Django hello world app running locally. Let's push it to a Git repository that we can later access from our Jelastic environment. On my organization's GitLab instance, I create an empty project and then push my code up. \
-<br /> \
-<br />
+\
+OK, we have our Django hello world app running locally. Let's push it to a Git repository that we can later access from our Jelastic environment. On my organization's GitLab instance, I create an empty project and then push my code up.
 
 ```sh
 git remote add origin git@git.example.com:elijah/django-test.git
@@ -163,23 +150,15 @@ Now we need to login into Reclaim Cloud and create our app.
 
 Here's what it looks like.
 
-<br /> \
-<br />
 ![jelastic1](/django-jelastic/jelastic1.png)
 
-<br /> \
-<br />
-Click `Create` button. This took about 2 minutes to setup. \
-<br /> \
-<br />
+\
+Click `Create` button. This took about 2 minutes to setup.
 
 ![jelastic2](/django-jelastic/jelastic2.png)
 
-<br /> \
-<br />
-Afterwards, I browsed to https://django-test.us.reclaim.cloud/ and saw the following. \
-<br /> \
-<br />
+\
+Afterwards, I browsed to https://django-test.us.reclaim.cloud/ and saw the following.
 
 ![browse3](/django-jelastic/browse3.png)
 
@@ -189,45 +168,63 @@ Now we want to deploy our Django application and set it up so that all we need t
 
 ![jelastic3](/django-jelastic/jelastic3.png)
 
-<br /> \
-<br />
+\
 Then click `Add Repo`. A modal window appears and starts on a `Git` tab. Fill in the following.
 
-- Name: django-test
-- URL: git.company.com:elijah/django-test.git
-- Branch: main
-- Check: Use Authentication
-- Login: git
-- Access Type: SSH Key
-- Select key: Add Private Key
-  - Name: elijah
-  - Key: REMOVED
-  - Click "Add"
+- Name: `django-test`
+- URL: `git.company.com:elijah/django-test.git`
+- Branch: `main`
+- Check: `Use Authentication`
+- Login: `git`
+- Access Type: `SSH Key`
+- Select key: `Add Private Key`
+  - Name: `elijah`
+  - Key: `REMOVED`
+  - Click `Add`
 
 Note: Your details for the above may differ. If you're like me and using a SSH key for accessing your Git repo, you will likely find your private key at `$HOME/.ssh/id_rsa`.
 
 ![jelastic4](/django-jelastic/jelastic4.png)
 
-<br /> \
-<br />
-Now click "Add + Deploy". This brings you to another modal window where you are asked to pick an environment to deploy to. I've selected my only environment. \
-<br /> \
-<br />
+\
+Now click "Add + Deploy". This brings you to another modal window where you are asked to pick an environment to deploy to. I've selected my only environment.
 
 ![jelastic5](/django-jelastic/jelastic5.png)
 
-<br /> \
-<br />
-From here, click deploy. This took `25 seconds`. Go ahead and browse to https://django-test.us.reclaim.cloud/. \
-<br /> \
-<br />
+\
+From here, click deploy. This took `25 seconds`. Go ahead and browse to https://django-test.us.reclaim.cloud/.
 
 ![browse4](/django-jelastic/browse4.png)
 
-<br /> \
-<br />
-We can setup Jelastic to periodically poll our Git repo and do a pull when there are changes. Or we can use this button to pull those changes down on demand. \
-<br /> \
-<br />
+\
+We can setup Jelastic to periodically poll our Git repo and do a pull when there are changes. Or we can use this button to pull those changes down on demand.
 
 ![jelastic6](/django-jelastic/jelastic6.png)
+
+## Explaining some of gotchas
+
+Walking through these steps start to finish shouldn't take more than 10 minutes. But it took me hours to figure out how to get everything working. First, I want to give credit to https://djangoforbeginners.com/hello-world/, which I used to help me get started with Django. I don't have a lot of experience with Django or using Apache with the `mod_wsgi` for that matter.
+
+One thing that had me stuck for a while was getting the Git deployment working. The gotcha there for me was what to put as the username with the SSH key. The answer was to use just `git` as show above.
+
+The other thing that had be stumped for a while was how to properly connect Apache to Django. I'm used to using Gunicorn to run Python apps and typicaly Nginx as a proxy. But Jelastic doesn't have that setup out of the box so I tried to work within their default configuration. The first key to figuring this out was to look at the environment variables.
+
+![jelastic7](/django-jelastic/jelastic7.png)
+
+\
+Here we see `WSGI_SCRIPT`, which points to `/var/www/webroot/ROOT/wsgi.py`.
+
+![jelastic8](/django-jelastic/jelastic8.png)
+
+\
+We can pop open a Web SSH console.
+
+![jelastic9](/django-jelastic/jelastic9.png)
+
+\
+If we check the Apache configuration we find that it uses this environment variable to set Apache's entry point for `/`.
+
+![jelastic10](/django-jelastic/jelastic10.png)
+
+\
+The problem I had is that the hello world example I was following didn't use a `wsgi.py` and none of the example files I was finding worked. That is until I found https://jelastic.com/blog/django-cms-installation-python-cloud-hosting/, where on step 6 under the manual instructions. The key was understanding what to set `DJANGO_SETTINGS_MODULE` to, which in my case was `ROOT.config.settings`. After finding that, everything else was fairly straightforward.

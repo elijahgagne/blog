@@ -13,9 +13,9 @@ At this point I have the `gagnenet.com` domain and I'd like to find hosting for 
 
 There are two hosting providers I've tinkered around with in the past that I decided to explore further.
 
-The first is [GitHub Pages](https://pages.github.com/). It's free and publishing new content is simple. It works by creating a GitHub repository and pushing content up. In the most basic example, you create HTML/CSS/JavaScript content locally and do a `git push` to publish your website updates. They also have integration with a static site generater called [Jekyll](https://jekyllrb.com/). Making use of the integration, you can create content in [markdown](https://www.markdownguide.org/getting-started/) and push that to the Git repo. After that, GitHub runs Jekyll on their platform to build your website from the markdown. GitHub Pages does let you choose a custom domain, but they do not offer HTTPS built in. To accomplish that, we can introduce [Cloudflare as a proxy](https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/). This great because Cloudflare has built in support for using [Let's Encrypt](https://letsencrypt.org/) so it will handle creating and updating the certificates for you.
+The first is [GitHub Pages](https://pages.github.com/). It's free and publishing new content is simple. It works by creating a GitHub repository and pushing content up. In the most basic case, you create HTML/CSS/JavaScript content locally and do a `git push` to publish your website updates. They also have integration with a static site generater called [Jekyll](https://jekyllrb.com/). Making use of the integration, you can create content in [markdown](https://www.markdownguide.org/getting-started/) and push that to the Git repo. After that, GitHub runs Jekyll on their platform to build your website from the markdown. GitHub Pages does let you choose a custom domain, but they do not offer HTTPS built in. To accomplish that, we can introduce [Cloudflare as a proxy](https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/). This great because Cloudflare has built in support for using [Let's Encrypt](https://letsencrypt.org/) so it will handle creating and updating the certificates for you.
 
-For me, the downside is Jekyll. There are players in the static site generator field that I am familiar with: Jekyll and [Hugo](https://gohugo.io/). Jekyll is based on Ruby, while Hugo is written in Go. Jekyll is said to be easier for beginners and has better themes. Hugo is known to be super fast (sometimes 35x faster than Jekyll) and has more built in features. Speed of deployment shouldn't be a factor for me since I don't expect a big site, but I couldn't ignore how nice it was to press `Cmd-S` to save a file and `Cmd-Tab` to switch to my browser and see my content updated in a fraction of a second.
+For me, the downside is Jekyll. There are two players in the static site generator field that I am familiar with: Jekyll and [Hugo](https://gohugo.io/). Jekyll is based on Ruby, while Hugo is written in Go. Jekyll is said to be easier for beginners and has better themes. Hugo is known to be super fast (sometimes 35x faster than Jekyll) and has more built in features. Speed of deployment shouldn't be a factor for me since I don't expect a big site, but I couldn't ignore how nice it was to press `Cmd-S` to save a file and `Cmd-Tab` to switch to my browser and see my content updated in a fraction of a second.
 
 So Hugo it is. I could still use Hugo with GitHub Pages, but there is no built in integration. What this means is that I would run Hugo locally, let it produce the static content, and then push that static content up to GitHub. Not terrible, but not really what I wanted if I could avoid it.
 
@@ -78,11 +78,11 @@ Let's do some basic configuration and create a hello world post. I launch VS Cod
 # Set the theme
 echo 'theme: PaperMod' >> config.yml
 
-# Open the current directory in Visual Studio Code
-code .
-
 # Create a post
 hugo new posts/first-post.md
+
+# Open the current directory in Visual Studio Code
+code .
 ```
 
 I can then start the Hugo development server and view my site by browsing to [http://localhost:1313/](http://localhost:1313/).
