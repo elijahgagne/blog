@@ -23,6 +23,7 @@ params:
   defaultTheme: auto
   disableThemeToggle: false
 
+  comments: true
   ShowReadingTime: true
   ShowShareButtons: true
   disableSpecial1stPost: false
