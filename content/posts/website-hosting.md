@@ -5,7 +5,7 @@ tags: ["blog"]
 draft: false
 ---
 
-At this point I have the `gagnenet.com` domain and I'd like to find hosting for https://gagnenet.com/. Let's outline some of the requirements I have:
+Earlier, at this point I have the `gagnenet.com` domain and I'd like to find hosting for https://gagnenet.com/. Let's outline some of the requirements I have:
 
 - $0 cost is highly desirable
 - Easy HTTPS certificate management is a plus
