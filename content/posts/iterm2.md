@@ -5,8 +5,6 @@ tags: ["software"]
 draft: false
 ---
 
-Hello RTL
-
 I'm going to start a series of posts talking about software I use daily, highlight some of it's features, and describe how I've customize it. First up for [iterm2](https://iterm2.com/). In my opinion, there is no better terminal on any platform. iTerm2 is only for macOS.
 
 Here are some quick links that might peak your interest
