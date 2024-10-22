@@ -1,9 +1,9 @@
-baseURL: "https://gagnenet.com"
+baseURL: "https://gagnes.net/"
 title: Elijah Gagne
 paginate: 5
 theme: PaperMod
 
-disqusShortname: gagnenet
+disqusShortname: gagnes
 googleAnalytics: G-MW603CMQ2K
 enableRobotsTXT: true
 buildDrafts: false

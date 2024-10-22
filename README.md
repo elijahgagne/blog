@@ -2,7 +2,7 @@
 ## Write a post
 
 ```sh
-cd /Users/egagne/code/github/elijahgagne.github.io
+cd /Users/d92495j/code/elijahgagne/blog
 git pull
 
 code .
