@@ -42,7 +42,7 @@ params:
     safari_pinned_tab: "<link / abs url>"
 
   label:
-    text: "GagneNet"
+    text: "GagnesNet"
     icon: /headshot.jpg
     iconHeight: 35
 
