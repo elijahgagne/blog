@@ -1,10 +1,10 @@
 baseURL: "https://gagnes.net/"
 title: Elijah Gagne
-paginate: 5
+pagerSize: 5
 theme: PaperMod
 
 disqusShortname: gagnes
-googleAnalytics: G-MW603CMQ2K
+googleAnalytics: G-1FZFKXEX7D
 enableRobotsTXT: true
 buildDrafts: false
 buildFuture: false
