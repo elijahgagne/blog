@@ -260,7 +260,7 @@ Alright, so LFS works for large files, but there are still limits imposed by the
 
 For this use case we need a way to remove the super large files from the Git repo. This is going to mean rewriting Git history. There is a `git filter-branch` command built into the command line binary to do this. But even [GitHub recommends](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#purging-a-file-from-your-repositorys-history) that instead you consider using the open source tool called [BFG Repo Cleaner](https://rtyley.github.io/bfg-repo-cleaner/).
 
-Note that this tool/workflow might also be useful if you've accidently committed sensitive data to a repository. I'm of the opinion that if you put a password and encryption key in a repo, your best bet is to change that credential immediately because you might not be able to account for anyone else you pulled down your secrets. But that's a topic for a different post.
+Note that this tool/workflow might also be useful if you've accidently committed sensitive data to a repository. I'm of the opinion that if you put a password and encryption key in a repo, your best bet is to change that credential immediately because you might not be able to account for anyone else you pulled down your secrets. But that's a topic for a different post. Additionally, I'll add that if you want to overwrite the remotes history, that is possible with a `git push --force`
 
 This code block demos the following
 
