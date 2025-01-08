@@ -18,7 +18,7 @@ This blog post is going to demo migrating a Git repository that contains large f
 
 ## Create empty repos at gitlab.com and github.com
 
-I have already created personal accounts at gitlab.com and github.com. We will use GitLab are the source and GitHub as the target, but these are just examples.
+I have already created personal accounts at gitlab.com and github.com. We will use GitLab as the source and GitHub as the target, but these are just examples.
 
 First, let's create an empty repository in GitLab. To do that I browse to [https://gitlab.com/projects/new#blank_project](https://gitlab.com/projects/new#blank_project), login, and fill out the following:
 - Project name: demo-large-files
