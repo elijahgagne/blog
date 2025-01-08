@@ -44,9 +44,9 @@ Following these steps, I now have two empty repositories at:
 I like to work locally as much as possible. I use my Mac's Downloads folder as a "scratch" space of sorts. In the steps below, I do the following:
 
 - Create a demo-large-files folder
-- Initial a Git repo in this folder
+- Initialize a Git repo in this folder
 - Create some demo folders and files
-- Make an initial commit
+- Make a commit
 - Create two branches
 - Create two tags
 - Add a remote
@@ -105,7 +105,7 @@ The code below does the following
 - git clone --mirror
 - Changes the repo to non-bare. This is useful if we plan to push the repo to a new remote.
 - We look at the file structure, branches, and tags
-- Then we done a regular clone and see how it is different. Note that the tags will come over, but not the branches.
+- Then we do a regular clone and see how it is different. Note that the tags will come over, but not the branches.
 - Finally we delete everything locally
 
 ```sh
@@ -158,7 +158,7 @@ cd ~/Downloads
 rm -rf demo-large-files
 ```
 
-For the same result, here are steps that do a mirror clone, convert it to a non-bare repo, and then pull in all the branches
+For the same result, here are steps that do a mirror clone, convert it to a non-bare repo, and then pull in all the branches.
 
 ```sh
 git clone --mirror https://gitlab.com/egagne/demo-large-files.git
@@ -188,7 +188,7 @@ OK, that's been fun, but let's move on to working with large files now. The code
 - Pulls down all the branches
 - Create two large (128mb) and two super large (2.1gb) files
 - Commits the files
-- Add GitHub as the remote origin
+- Adds GitHub as the remote origin
 - Tries a push
 
 Note that this will fail because GitHub (same is true for GitLab) has a max file size limit of 100mb.
@@ -219,6 +219,8 @@ git remote set-url origin https://github.com/elijahgagne/demo-large-files.git
 
 git push
 ```
+
+The push is expected to fail because of the large files.
 
 ## Install git lfs
 
@@ -260,7 +262,7 @@ Alright, so LFS works for large files, but there are still limits imposed by the
 
 For this use case we need a way to remove the super large files from the Git repo. This is going to mean rewriting Git history. There is a `git filter-branch` command built into the command line binary to do this. But even [GitHub recommends](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#purging-a-file-from-your-repositorys-history) that instead you consider using the open source tool called [BFG Repo Cleaner](https://rtyley.github.io/bfg-repo-cleaner/).
 
-Note that this tool/workflow might also be useful if you've accidently committed sensitive data to a repository. I'm of the opinion that if you put a password and encryption key in a repo, your best bet is to change that credential immediately because you might not be able to account for anyone else you pulled down your secrets. But that's a topic for a different post. Additionally, I'll add that if you want to overwrite the remotes history, that is possible with a `git push --force`
+Note that this tool/workflow might also be useful if you've accidently committed sensitive data to a repository. I'm of the opinion that if you put a password or encryption key in a repo, your best bet is to change that credential immediately because you might not be able to account for anyone else you pulled down your secrets. But that's a topic for a different post. Additionally, I'll add that if you want to overwrite the remotes history, that is possible with a `git push --force`
 
 This code block demos the following
 
