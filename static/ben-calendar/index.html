@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>DBS Calendar</title>
+</head>
+<body>
+  <div class="container" role="application" aria-label="DBS Calendar">
+    <header>
+      <div class="title-row-mobile">
+        <div class="title">
+          <div class="logo">DBS</div>
+          <div>
+            <h1>DBS Calendar</h1>
+          </div>
+          <!-- Theme slider toggle (now next to title) -->
+          <label class="theme-switch theme-toggle-slider" title="Toggle dark/light mode" style="margin-left:12px;">
+            <span class="theme-icon" id="themeToggleIcon">🌙</span>
+            <input id="themeToggleSlider" type="checkbox" aria-label="Toggle dark/light mode">
+            <span class="theme-slider"></span>
+            <span class="theme-icon" id="themeToggleIconLight">☀️</span>
+          </label>
+        </div>
+      </div>
+      <div class="controls" role="toolbar" aria-label="Controls">
+        <div class="toggle" role="tablist" aria-label="View toggle">
+          <button id="monthViewBtn" class="btn" role="tab" aria-selected="false">Month View</button>
+          <button id="weekViewBtn" class="btn" role="tab" aria-selected="false">Week View</button>
+          <button id="listViewBtn" class="btn" role="tab" aria-selected="false">List View</button>
+        </div>
+
+        <div class="month-nav" aria-label="Navigation" id="monthNav">
+          <button id="prev" class="btn" aria-label="Previous">◀ Prev</button>
+          <div style="min-width:160px;text-align:center">
+            <!-- Removed theme toggle button from here -->
+            <div id="periodLabel" class="month-title">Period</div>
+            <div id="subLabel" class="small"> </div>
+          </div>
+          <button id="next" class="btn" aria-label="Next">Next ▶</button>
+        </div>
+
+        <!-- Legend (click to filter in list view) -->
+        <div class="legend" id="legend" role="toolbar" aria-label="Color filters">
+          <div class="item" data-color="All"><div class="swatch"></div>All</div>
+          <div class="item" data-color="Green"><div class="swatch c-Green"></div>Green</div>
+          <div class="item" data-color="Red"><div class="swatch c-Red"></div>Red</div>
+          <div class="item" data-color="Yellow"><div class="swatch c-Yellow"></div>Yellow</div>
+          <div class="item" data-color="Purple"><div class="swatch c-Purple"></div>Purple</div>
+          <div class="item" data-color="Blue"><div class="swatch c-Blue"></div>Blue</div>
+          <button id="showPreviousBtn" class="btn previous-events-toggle" title="Toggle previous events">
+            <span id="previousEventsIcon">👁️</span> Show Previous
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="card" aria-live="polite">
+      <!-- Month area (7x6 grid) -->
+      <div id="monthArea">
+        <div class="grid" id="weekdays">
+          <div class="weekday">Sun</div>
+          <div class="weekday">Mon</div>
+          <div class="weekday">Tue</div>
+          <div class="weekday">Wed</div>
+          <div class="weekday">Thu</div>
+          <div class="weekday">Fri</div>
+          <div class="weekday">Sat</div>
+        </div>
+        <div style="height:12px"></div>
+        <div class="grid" id="calendarGrid" aria-label="Calendar days">
+          <!-- 42 day cells -->
+        </div>
+
+        <div class="pager" id="monthPager" role="navigation" aria-label="Month pager">
+          <button id="prevBottom" class="btn">◀ Prev</button>
+          <div id="pagerLabel" class="small" style="min-width:160px;text-align:center"></div>
+          <button id="nextBottom" class="btn">Next ▶</button>
+        </div>
+      </div>
+
+      <!-- Week area (single week row) -->
+      <div id="weekArea" style="display:none;">
+        <div class="week-grid" id="weekGrid">
+          <!-- 7 week-day cells -->
+        </div>
+        <div class="pager" id="weekPager" role="navigation" aria-label="Week pager" style="margin-top:12px;">
+          <button id="prevWeek" class="btn">◀ Prev</button>
+          <div id="weekLabel" class="small" style="min-width:160px;text-align:center"></div>
+          <button id="nextWeek" class="btn">Next ▶</button>
+        </div>
+      </div>
+
+      <!-- List view -->
+      <div id="listArea" style="display:none; margin-top:12px;">
+        <!-- Remove the legend/filter buttons above the rows -->
+        <div id="listContent"></div>
+      </div>
+    </main>
+
+    <footer style="text-align: center; margin-top: 40px; padding: 20px; color: var(--muted); font-size: 13px;">
+      Please send feedback to <a href="mailto:dbspto@gmail.com" style="color: var(--accent); text-decoration: none;">dbspto@gmail.com</a>
+    </footer>
+  </div>
+  <script src="data.js"></script>
+  <script src="primary.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
