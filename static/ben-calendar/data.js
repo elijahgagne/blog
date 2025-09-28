@@ -1,8 +1,6 @@
 const yamlString = `
 Calendar:
   - Color: Yellow
-    - Name: Catechism
-      Date: 2025-09-11
     - Name: Catechism, blessing 8:30 am Mass, Hosting coffee hour
       Date: 2025-09-21
     - Name: Catechism
