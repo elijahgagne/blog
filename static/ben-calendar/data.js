@@ -1,5 +1,53 @@
 const yamlString = `
 Calendar:
+  - Color: Yellow
+    - Name: Catechism
+      Date: 2025-09-11
+    - Name: Catechism, blessing 8:30 am Mass, Hosting coffee hour
+      Date: 2025-09-21
+    - Name: Catechism
+      Date: 2025-09-28
+    - Name: Catechism, Marian procession for 8:30 Mass
+      Date: 2025-10-05
+    - Name: Catechism, Hosting coffee hour
+      Date: 2025-10-26
+    - Name: Catechism
+      Date: 2025-11-23
+    - Name: Catechism, Christmas Eve Mass Music Practice
+      Date: 2025-12-07
+    - Name: Catechism, Hosting coffee hour, Christmas Eve Mass Music Practice
+      Date: 2025-12-14
+    - Name: Catechism, Hosting coffee hour
+      Date: 2026-01-11
+    - Name: Catechism, Hosting coffee hour
+      Date: 2026-02-08
+    - Name: Catechism, Hosting coffee hour
+      Date: 2026-03-08
+    - Name: Catechism
+      Date: 2026-03-22
+    - Name: Catechism, Hosting coffee hour
+      Date: 2026-04-12
+    - Name: Catechism, First Communion Practice
+      Date: 2026-04-26
+  - Color: Yellow
+    - Name: Hosting coffee hour, Christmas Giving Project - Crafts
+      Date: 2025-11-09
+    - Name: Christmas Bazaar 9:00am-1:30pm
+      Date: 2025-11-15
+    - Name: (2 grade) First Reconciliation 2:30 pm Church Confessional
+      Date: 2025-12-06
+    - Name: Christmas Eve Mass
+      Date: 2025-12-24
+    - Name: Potlucky Bingo after 4:00 pm Mass
+      Date: 2025-01-31
+    - Name: (optional) Circle of Grace
+      Date: 2025-02-15
+    - Name: Stations of The Cross/Soup Supper 5:30pm
+      Date: 2025-03-06
+    - Name: (pending) Confirmation Mass 5:00pm Saint Anthony's Church
+      Date: 2025-05-03
+    - Name: First Communion/May Crowning 8:30am Mass
+      Date: 2025-05-10
   - Color: Purple
     - Name: Swim Lessons (4:35-5:05pm UVAC)
       Date: 2025-09-11
