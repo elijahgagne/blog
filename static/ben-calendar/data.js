@@ -1,30 +1,26 @@
 const yamlString = `
 Calendar:
   - Color: Yellow
+    - Name: Catechism
+      Date
+        - 2025-09-28
+        - 2025-11-23
+        - 2026-03-22
+      - Name: Catechism, Hosting coffee hour
+        Dates
+          - 2025-10-26
+          - 2026-01-11
+          - 2026-02-08
+          - 2026-03-08
+          - 2026-04-12
     - Name: Catechism, blessing 8:30 am Mass, Hosting coffee hour
       Date: 2025-09-21
-    - Name: Catechism
-      Date: 2025-09-28
     - Name: Catechism, Marian procession for 8:30 Mass
       Date: 2025-10-05
-    - Name: Catechism, Hosting coffee hour
-      Date: 2025-10-26
-    - Name: Catechism
-      Date: 2025-11-23
     - Name: Catechism, Christmas Eve Mass Music Practice
       Date: 2025-12-07
     - Name: Catechism, Hosting coffee hour, Christmas Eve Mass Music Practice
       Date: 2025-12-14
-    - Name: Catechism, Hosting coffee hour
-      Date: 2026-01-11
-    - Name: Catechism, Hosting coffee hour
-      Date: 2026-02-08
-    - Name: Catechism, Hosting coffee hour
-      Date: 2026-03-08
-    - Name: Catechism
-      Date: 2026-03-22
-    - Name: Catechism, Hosting coffee hour
-      Date: 2026-04-12
     - Name: Catechism, First Communion Practice
       Date: 2026-04-26
   - Color: Yellow
@@ -84,6 +80,19 @@ Calendar:
       Date: 2025-10-14
     - Name: Soccer (10:15-11:15am Maxfield)
       Date: 2025-10-18
+  - Color: Blue
+    - Name: Basketball
+      Dates
+        - 2026-01-10
+        - 2026-01-17
+        - 2026-01-24
+        - 2026-01-31
+        - 2026-02-07
+        - 2026-02-14
+        - 2026-02-21
+  - Color: Green
+    - Name: First Day of School
+        - 2025-10-13
   - Color: Green
     - Name: First Day of School
       Date: 2025-08-28
