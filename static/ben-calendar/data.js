@@ -33,15 +33,15 @@ Calendar:
     - Name: Christmas Eve Mass
       Date: 2025-12-24
     - Name: Potlucky Bingo after 4:00 pm Mass
-      Date: 2025-01-31
+      Date: 2026-01-31
     - Name: (optional) Circle of Grace
-      Date: 2025-02-15
+      Date: 2026-02-15
     - Name: Stations of The Cross/Soup Supper 5:30pm
-      Date: 2025-03-06
+      Date: 2026-03-06
     - Name: (pending) Confirmation Mass 5:00pm Saint Anthony's Church
-      Date: 2025-05-03
+      Date: 2026-05-03
     - Name: First Communion/May Crowning 8:30am Mass
-      Date: 2025-05-10
+      Date: 2026-05-10
   - Color: Purple
     - Name: Swim Lessons (4:35-5:05pm UVAC)
       Date: 2025-09-11
