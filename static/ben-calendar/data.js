@@ -43,16 +43,6 @@ Calendar:
     - Name: First Communion/May Crowning 8:30am Mass
       Date: 2026-05-10
   - Color: Purple
-    - Name: Swim Lessons (4:35-5:05pm UVAC)
-      Date: 2025-09-11
-    - Name: Swim Lessons (4:35-5:05pm UVAC)
-      Date: 2025-09-18
-    - Name: Swim Lessons (4:35-5:05pm UVAC)
-      Date: 2025-09-25
-    - Name: Swim Lessons (4:35-5:05pm UVAC)
-      Date: 2025-10-02
-    - Name: Swim Lessons (4:35-5:05pm UVAC)
-      Date: 2025-10-09
   - Color: Blue
     - Name: Soccer (10:15-11:15am Maxfield)
       Date: 2025-09-06
@@ -80,19 +70,32 @@ Calendar:
       Date: 2025-10-14
     - Name: Soccer (10:15-11:15am Maxfield)
       Date: 2025-10-18
-  - Color: Blue
-    - Name: Basketball
+  - Color: Purple
+    - Name: Soccer 5:30-6:30pm Watson
       Dates
-        - 2026-01-10
-        - 2026-01-17
-        - 2026-01-24
-        - 2026-01-31
-        - 2026-02-07
-        - 2026-02-14
-        - 2026-02-21
-  - Color: Green
-    - Name: First Day of School
-        - 2025-10-13
+        - 2026-04-30
+        - 2026-05-07
+        - 2026-05-14
+        - 2026-05-21
+        - 2026-05-28
+        - 2026-06-04
+  - Color: Blue
+    - Name: Baseball 5:30-6:30pm (Maxfield)
+      Dates
+        - 2026-04-27
+        - 2026-04-29
+        - 2026-05-04
+        - 2026-05-06
+        - 2026-05-11
+        - 2026-05-13
+        - 2026-05-18
+        - 2026-05-20
+        - 2026-05-25
+        - 2026-05-27
+        - 2026-06-01
+        - 2026-06-03
+        - 2026-06-08
+        - 2026-06-10
   - Color: Green
     - Name: First Day of School
       Date: 2025-08-28
@@ -100,12 +103,12 @@ Calendar:
       Date: 2025-10-24
     - Name: K-5 December Concert
       Date: 2025-12-11
-    - Name: DBS School Musical @ 6:30pm
+    - Name: Drama Club Performance of "CATS!" @ 6:30pm
       Date: 2026-04-16
     - Name: K to 2 Spring Concert
       Date: 2026-05-13
     - Name: Last Day
-      Date: 2026-06-15
+      Date: 2026-06-17
   - Color: Red
     - Name: Labor Day, No School
       Date: 2025-09-01
