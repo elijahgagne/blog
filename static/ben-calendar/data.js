@@ -6,13 +6,13 @@ Calendar:
         - 2025-09-28
         - 2025-11-23
         - 2026-03-22
-      - Name: Catechism, Hosting coffee hour
-        Dates
-          - 2025-10-26
-          - 2026-01-11
-          - 2026-02-08
-          - 2026-03-08
-          - 2026-04-12
+    - Name: Catechism, Hosting coffee hour
+      Dates
+        - 2025-10-26
+        - 2026-01-11
+        - 2026-02-08
+        - 2026-03-08
+        - 2026-04-12
     - Name: Catechism, blessing 8:30 am Mass, Hosting coffee hour
       Date: 2025-09-21
     - Name: Catechism, Marian procession for 8:30 Mass
