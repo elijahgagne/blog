@@ -79,6 +79,7 @@ Calendar:
         - 2026-05-21
         - 2026-05-28
         - 2026-06-04
+        - 2026-06-11
   - Color: Blue
     - Name: Baseball 5:30-6:30pm (Maxfield)
       Dates
