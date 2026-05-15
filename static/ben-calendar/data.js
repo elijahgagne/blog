@@ -81,7 +81,7 @@ Calendar:
         - 2026-06-04
         - 2026-06-11
   - Color: Blue
-    - Name: Baseball 5:30-6:30pm (Maxfield)
+    - Name: Baseball Practice 5:00-6:00pm (field #3)
       Dates
         - 2026-04-27
         - 2026-04-29
@@ -90,13 +90,16 @@ Calendar:
         - 2026-05-11
         - 2026-05-13
         - 2026-05-18
-        - 2026-05-20
-        - 2026-05-25
-        - 2026-05-27
         - 2026-06-01
-        - 2026-06-03
         - 2026-06-08
-        - 2026-06-10
+    - Name: Baseball Game Big Green vs. Wildcats 6:00pm (field #4)
+      Date: 2026-05-20
+    - Name: Baseball Game Wildcats vs. Catamounts (field #3)
+      Date: 2026-05-27
+    - Name: Baseball Game Wildcats vs. Blackbears (field #3)
+      Date: 2026-06-03
+    - Name: Baseball Game Big Green vs. Wildcats (field #3)
+      Date: 2026-06-10
   - Color: Green
     - Name: First Day of School
       Date: 2025-08-28
