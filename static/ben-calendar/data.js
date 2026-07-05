@@ -2,7 +2,6 @@ const yamlString = `
 Calendar:
   - Color: Yellow
   - Color: Purple
-  - Color: Blue
     - Name: Tennis (MW 5:30-6:30pm)
       Dates:
         - 2026-07-20
@@ -11,6 +10,7 @@ Calendar:
         - 2026-07-29
         - 2026-08-03
         - 2026-08-05
+  - Color: Blue
     - Name: Soccer (MWF 4:45-6:15pm)
       Dates:
         - 2026-08-31
