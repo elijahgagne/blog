@@ -172,23 +172,7 @@ main.card {
   overflow-wrap:break-word;
   word-break:break-word;
   text-overflow:ellipsis;
-  /* For consistent height in week view */
   min-width:0;
-}
-/* In grid/month view, stack event pills vertically and allow wrapping */
-.events {
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-  overflow:hidden;
-}
-/* In week view, ensure event pills wrap and don't expand parent */
-.week-day .event-pill {
-  width:100%;
-  box-sizing:border-box;
-  white-space:normal;
-  overflow-wrap:break-word;
-  word-break:break-word;
 }
 
 /* Color styles */
@@ -204,26 +188,6 @@ main.card {
   align-items:center;
   justify-content:center;
   margin-top:12px;
-}
-
-/* Week view: display days horizontally with compact cells */
-.week-grid {
-  display:flex;
-  gap:8px;
-}
-.week-day {
-  flex:1;
-  min-height:140px;
-  background:var(--glass);
-  border-radius:10px;
-  padding:10px;
-  display:flex;
-  flex-direction:column;
-  border:1px solid rgba(255,255,255,0.02);
-}
-.week-day .date-num {
-  margin-bottom:8px;
-  background:rgba(0,0,0,0.12);
 }
 
 /* List view */
@@ -304,7 +268,6 @@ main.card {
   .container { padding-bottom:40px; }
   .day { min-height:84px }
   header { flex-direction:column; align-items:stretch; gap:12px; }
-  .week-grid { flex-direction:column; }
 }
 
 /* --- IMPROVED MONTH VIEW FOR MOBILE --- */
@@ -446,37 +409,6 @@ main.card {
     width: 100%;
     margin-top: 0;
     margin-bottom: 0;
-  }
-
-  .week-grid {
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .week-day {
-    min-height: unset;
-    height: auto;
-    padding: 6px 4px;
-    font-size: 13px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 8px;
-  }
-
-  .week-day .date-num {
-    margin-bottom: 4px;
-    font-size: 12px;
-    padding: 3px 6px;
-    border-radius: 6px;
-  }
-
-  .week-day .event-pill {
-    font-size: 11px;
-    padding: 3px 6px;
-    border-radius: 6px;
-    margin-top: 2px;
-    margin-bottom: 0;
-    line-height: 1.2;
   }
 
   /* Expanded event pill overlay for mobile month view */

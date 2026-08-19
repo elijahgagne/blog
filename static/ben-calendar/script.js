@@ -1,12 +1,9 @@
 const today = new Date();
-let currentView = 'month';
+let currentView = 'list';
 let listFilter = "All";
 let showPreviousEvents = false;
 let monthIndex = 0;
-const academicStartYear = 2025;
-// weekStartDate must exist before switching to week view or calling renderWeek()
-let weekStartDate = startOfWeek(today);
-weekStartDate = clampWeekToAcademic(weekStartDate);
+const academicStartYear = 2026;
 
 events = processYAMLString(yamlString);
 const eventMap = buildEventMap(events);
@@ -50,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Toggle views */
 monthViewBtn.addEventListener('click', ()=> { currentView = 'month'; render(); });
-weekViewBtn.addEventListener('click', ()=> { currentView = 'week'; render(); });
 listViewBtn.addEventListener('click', ()=> { currentView = 'list'; render(); });
 
 /* Month navigation */
@@ -61,28 +57,6 @@ prevBottom.addEventListener('click', ()=> {
 });
 nextBottom.addEventListener('click', ()=> {
   if(currentView === 'month' && monthIndex < months.length - 1){ monthIndex++; render(); }
-});
-/* Week navigation */
-prevWeek.addEventListener('click', ()=> { weekStartDate = startOfWeek(addDays(weekStartDate, -7)); weekStartDate = clampWeekToAcademic(weekStartDate); render(); });
-nextWeek.addEventListener('click', ()=> { weekStartDate = startOfWeek(addDays(weekStartDate, 7)); weekStartDate = clampWeekToAcademic(weekStartDate); render(); });
-// Fix: also wire top pager buttons for week view
-prevTop.addEventListener('click', ()=> {
-  if(currentView === 'month') {
-    if(monthIndex > 0){ monthIndex--; render(); }
-  } else if(currentView === 'week') {
-    weekStartDate = startOfWeek(addDays(weekStartDate, -7));
-    weekStartDate = clampWeekToAcademic(weekStartDate);
-    render();
-  }
-});
-nextTop.addEventListener('click', ()=> {
-  if(currentView === 'month') {
-    if(monthIndex < months.length - 1){ monthIndex++; render(); }
-  } else if(currentView === 'week') {
-    weekStartDate = startOfWeek(addDays(weekStartDate, 7));
-    weekStartDate = clampWeekToAcademic(weekStartDate);
-    render();
-  }
 });
 /* Legend click: sets color filter; in list view it applies immediately; highlight active item */
 legend.addEventListener('click', (e)=>{
@@ -116,9 +90,6 @@ document.addEventListener('keydown', (e)=>{
   if(currentView === 'month'){
     if(e.key === 'ArrowLeft') { if(monthIndex > 0) { monthIndex--; render(); } }
     if(e.key === 'ArrowRight') { if(monthIndex < months.length - 1) { monthIndex++; render(); } }
-  } else if(currentView === 'week'){
-    if(e.key === 'ArrowLeft') { weekStartDate = startOfWeek(addDays(weekStartDate,-7)); weekStartDate = clampWeekToAcademic(weekStartDate); render(); }
-    if(e.key === 'ArrowRight') { weekStartDate = startOfWeek(addDays(weekStartDate, 7)); weekStartDate = clampWeekToAcademic(weekStartDate); render(); }
   }
 });
 
@@ -166,29 +137,9 @@ if (!window._monthNavPatched) {
   // Month navigation: only increment/decrement by 1
   window.prevTopBtn.addEventListener('click', ()=> {
     if(currentView === 'month' && monthIndex > 0){ monthIndex--; render(); }
-    else if(currentView === 'week') {
-      // Always allow previous week unless at academic start
-      const academicStart = new Date(academicStartYear,7,1);
-      const firstWeekStart = startOfWeek(academicStart);
-      if(weekStartDate > firstWeekStart) {
-        weekStartDate = startOfWeek(addDays(weekStartDate, -7));
-        weekStartDate = clampWeekToAcademic(weekStartDate);
-        render();
-      }
-    }
   });
   window.nextTopBtn.addEventListener('click', ()=> {
     if(currentView === 'month' && monthIndex < months.length - 1){ monthIndex++; render(); }
-    else if(currentView === 'week') {
-      // Always allow next week unless at academic end
-      const academicEnd = new Date(academicStartYear + 1,6,31);
-      const lastWeekStart = startOfWeek(academicEnd);
-      if(weekStartDate < lastWeekStart) {
-        weekStartDate = startOfWeek(addDays(weekStartDate, 7));
-        weekStartDate = clampWeekToAcademic(weekStartDate);
-        render();
-      }
-    }
   });
   window.prevBottomBtn.addEventListener('click', ()=> {
     if(currentView === 'month' && monthIndex > 0){ monthIndex--; render(); }
@@ -204,16 +155,12 @@ if (!window._monthNavPatched) {
 const origRender = render;
 render = function() {
   origRender();
-  updateMonthWeekNavDisabled();
+  updateMonthNavDisabled();
 };
 
-/* Initialize: start in Month view for current month */
+/* Initialize: default to List view on all screen sizes */
 (function init(){
-  if (window.innerWidth > 700) {
-    currentView = 'month';
-  } else {
-    currentView = 'list'; // Default to week on mobile
-  }
+  currentView = 'list';
   // ensure monthIndex is set to current month (done earlier)
   render();
 })();
@@ -284,11 +231,9 @@ function render(){
   if(currentView === 'month'){
     renderMonth();
     monthArea.style.display = '';
-    weekArea.style.display = 'none';
     listArea.style.display = 'none';
     legend.style.display = 'none';
     monthViewBtn.classList.add('active'); monthViewBtn.setAttribute('aria-selected','true');
-    weekViewBtn.classList.remove('active'); weekViewBtn.setAttribute('aria-selected','false');
     listViewBtn.classList.remove('active'); listViewBtn.setAttribute('aria-selected','false');
     monthNav.style.display = ''; // Show navigation in month view
     // Remove clickable and selected from all days in month view
@@ -299,25 +244,12 @@ function render(){
         cell.onclick = null;
       });
     }, 0);
-  } else if(currentView === 'week'){
-    renderWeek();
-    monthArea.style.display = 'none';
-    weekArea.style.display = '';
-    listArea.style.display = 'none';
-    legend.style.display = 'none';
-    monthViewBtn.classList.remove('active'); monthViewBtn.setAttribute('aria-selected','false');
-    weekViewBtn.classList.add('active'); weekViewBtn.setAttribute('aria-selected','true');
-    listViewBtn.classList.remove('active'); listViewBtn.setAttribute('aria-selected','false');
-    subLabel.textContent = '';
-    monthNav.style.display = ''; // Show navigation in week view
   } else {
     renderList();
     monthArea.style.display = 'none';
-    weekArea.style.display = 'none';
     listArea.style.display = '';
     legend.style.display = '';
     monthViewBtn.classList.remove('active'); monthViewBtn.setAttribute('aria-selected','false');
-    weekViewBtn.classList.remove('active'); weekViewBtn.setAttribute('aria-selected','false');
     listViewBtn.classList.add('active'); listViewBtn.setAttribute('aria-selected','true');
     monthNav.style.display = 'none'; // Hide navigation in list view
   }
@@ -393,55 +325,6 @@ function renderMonth(){
   nextTop.disabled = nextBottom.disabled = (monthIndex === months.length - 1);
 
   pagerLabel.textContent = `${monthIndex + 1} / ${months.length}`;
-}
-
-/* Week render: show week starting at weekStartDate */
-function renderWeek(){
-  weekGrid.innerHTML = '';
-  // Ensure weekStartDate exists and clamp it to academic range
-  if (typeof weekStartDate === 'undefined' || !weekStartDate) {
-    weekStartDate = startOfWeek(new Date());
-  }
-  weekStartDate = clampWeekToAcademic(weekStartDate);
-  const weekEnd = addDays(weekStartDate,6);
-  periodLabel.textContent = formatRangeLabel(weekStartDate, weekEnd);
-
-  // generate 7 days
-  let d = new Date(weekStartDate);
-  for(let i=0;i<7;i++){
-    const wd = document.createElement('div');
-    wd.className = 'week-day';
-    const dn = document.createElement('div');
-    dn.className = 'date-num';
-    dn.textContent = d.toLocaleDateString(undefined,{weekday:'short', month:'short', day:'numeric'});
-    wd.appendChild(dn);
-
-    const key = d.toISOString().slice(0,10);
-    const dayEvents = eventMap.get(key) || [];
-
-    dayEvents.forEach(ev=>{
-      const pill = document.createElement('div');
-      pill.className = 'event-pill ' + colorClassName(ev.Color);
-      pill.style.marginTop = '6px';
-      pill.textContent = ev.Name;
-      wd.appendChild(pill);
-    });
-
-    weekGrid.appendChild(wd);
-    d = addDays(d,1);
-  }
-
-  // week pager hard stops: compute first and last possible week starts within academic year
-  const academicStart = new Date(academicStartYear,7,1);
-  const academicEnd = new Date(academicStartYear + 1,6,31);
-  const firstWeekStart = startOfWeek(academicStart);
-  const lastWeekStart = startOfWeek(academicEnd);
-
-  prevWeek.disabled = weekStartDate <= firstWeekStart;
-  nextWeek.disabled = weekStartDate >= lastWeekStart;
-
-  // subLabel (show week counts)
-  // subLabel.textContent = `Week of ${weekStartDate.toLocaleDateString()}`; // removed
 }
 
 function renderList(){
@@ -635,23 +518,11 @@ function enableMonthEventExpand() {
 }
 
 // --- Fix disabling logic for prev/next buttons ---
-function updateMonthWeekNavDisabled() {
+function updateMonthNavDisabled() {
   // Month view
   if (currentView === 'month') {
     window.prevTopBtn.disabled = window.prevBottomBtn.disabled = (monthIndex === 0);
     window.nextTopBtn.disabled = window.nextBottomBtn.disabled = (monthIndex === months.length - 1);
-  }
-  // Week view
-  else if (currentView === 'week') {
-    const academicStart = new Date(academicStartYear,7,1);
-    const academicEnd = new Date(academicStartYear + 1,6,31);
-    const firstWeekStart = startOfWeek(academicStart);
-    const lastWeekStart = startOfWeek(academicEnd);
-    window.prevTopBtn.disabled = (weekStartDate <= firstWeekStart);
-    window.nextTopBtn.disabled = (weekStartDate >= lastWeekStart);
-    // Hide bottom pager in week view
-    window.prevBottomBtn.disabled = true;
-    window.nextBottomBtn.disabled = true;
   }
   // List view: all enabled
   else {
