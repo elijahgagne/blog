@@ -2,14 +2,31 @@ const yamlString = `
 Calendar:
   - Color: Yellow
   - Color: Purple
-    - Name: Tennis (MW 5:30-6:30pm)
+    - Name: Catechism and hosting Coffee Hour
       Dates:
-        - 2026-07-20
-        - 2026-07-22
-        - 2026-07-27
-        - 2026-08-03
-        - 2026-08-05
-        - 2026-08-10
+        - 2026-09-20
+        - 2026-11-08
+        - 2027-01-10
+        - 2027-03-21
+    - Name: Catechism
+      Dates:
+        - 2026-09-27
+        - 2026-10-25
+        - 2026-11-15
+        - 2027-03-07
+        - 2027-04-25
+    - Name: Catechism, Marian Procession, and hosting Coffee Hour
+      Date: 2026-10-18
+    - Name: Catechism, Christmas Eve Music Practice
+      Date: 2026-12-13
+    - Name: Potlucky Bingo after 4:00 Mass
+      Date: 2027-01-30
+    - Name: Catechism, Circle of Grace, and hosting Coffee Hour
+      Date: 2027-02-07
+    - Name: Stations of The Cross 5:30pm
+      Date: 2027-02-19
+    - Name: Catechism, Confirmation Practice, and hosting Coffee Hour
+      Date: 2027-04-04
   - Color: Blue
     - Name: Soccer (MWF 4:45-6:15pm)
       Dates:
@@ -37,7 +54,6 @@ Calendar:
         - 2026-10-19
         - 2026-10-21
         - 2026-10-23
-  - Color: Purple
   - Color: Green
   - Color: Red
 `
