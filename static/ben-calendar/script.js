@@ -8,6 +8,17 @@ const academicStartYear = 2026;
 events = processYAMLString(yamlString);
 const eventMap = buildEventMap(events);
 
+// Hide legend/filter items for colors with no events
+(function hideEmptyLegendColors(){
+  const activeColors = new Set(events.map(ev => (ev.Color || '').trim()));
+  document.querySelectorAll('#legend .item').forEach(it => {
+    const color = it.getAttribute('data-color');
+    if (color !== 'All' && !activeColors.has(color)) {
+      it.style.display = 'none';
+    }
+  });
+})();
+
 /* months array Aug..Dec then Jan..Jul */
 const months = [];
 for(let m=8;m<=12;m++) months.push({month:m-1, year:academicStartYear});
@@ -202,7 +213,6 @@ if (themeToggleSlider) {
 
 // Previous events toggle functionality
 const showPreviousBtn = document.getElementById('showPreviousBtn');
-const previousEventsIcon = document.getElementById('previousEventsIcon');
 
 if (showPreviousBtn) {
   showPreviousBtn.addEventListener('click', function() {
@@ -211,10 +221,10 @@ if (showPreviousBtn) {
     // Update button appearance
     if (showPreviousEvents) {
       showPreviousBtn.classList.add('active');
-      showPreviousBtn.innerHTML = '<span id="previousEventsIcon">🙈</span> Hide Previous';
+      showPreviousBtn.textContent = 'Hide Previous';
     } else {
       showPreviousBtn.classList.remove('active');
-      showPreviousBtn.innerHTML = '<span id="previousEventsIcon">👁️</span> Show Previous';
+      showPreviousBtn.textContent = 'Show Previous';
     }
 
     // Re-render list view if currently active
